@@ -8,9 +8,12 @@ import web3 from '../../ethereum/web3';
 const CampaignNew = () => {
   const [minimumContribution, setMinimumContribution] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMessage('');
 
     try {
       const accounts = await web3.eth.getAccounts();
@@ -20,8 +23,8 @@ const CampaignNew = () => {
       });
     } catch (error) {
       setErrorMessage(error.message);
-      console.log(error.message);
     }
+    setLoading(false);
   };
   return (
     <Layout>
@@ -42,7 +45,9 @@ const CampaignNew = () => {
           content={errorMessage}
           visible={!!errorMessage}
         />
-        <Button primary>Create!</Button>
+        <Button primary loading={loading}>
+          Create!
+        </Button>
       </Form>
     </Layout>
   );
