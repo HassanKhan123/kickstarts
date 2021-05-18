@@ -1,16 +1,22 @@
-import React from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Form, Button, Input } from 'semantic-ui-react';
 
 import Layout from '../../components/Layout';
 
 const CampaignNew = () => {
+  const [minimumContribution, setMinimumContribution] = useState('');
   return (
     <Layout>
       <h3>Create a Campaign</h3>
       <Form>
         <Form.Field>
           <label>Minimum Contribution</label>
-          <input />
+          <Input
+            label='wei'
+            labelPosition='right'
+            value={minimumContribution}
+            onChange={(e) => setMinimumContribution(e.target.value)}
+          />
         </Form.Field>
 
         <Button primary>Create!</Button>
