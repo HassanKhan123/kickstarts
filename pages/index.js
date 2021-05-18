@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 
 import factory from '../ethereum/factory';
 
-function NewCampaign() {
-  useEffect(() => {
-    (async () => {
-      const campaigns = await factory.methods.getDeployedCampaigns().call();
-      console.log('campaigns======', campaigns);
-    })();
-  }, []);
+const NewCampaign = (props) => {
   return (
     <div>
-      <h1>New Campaign</h1>
+      <h1>{props.campaigns[0]}</h1>
     </div>
   );
-}
+};
+
+NewCampaign.getInitialProps = async () => {
+  const campaigns = await factory.methods.getDeployedCampaigns().call();
+  return { campaigns };
+};
 
 export default NewCampaign;
