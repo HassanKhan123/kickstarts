@@ -1,11 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import factory from '../ethereum/factory';
+import { Card } from 'semantic-ui-react';
+// import 'semantic-ui-css/semantic.min.css';
 
 const NewCampaign = (props) => {
+  const items = props.campaigns.map((address) => {
+    return {
+      header: address,
+      description: <a>View Campaign</a>,
+      fluid: true,
+    };
+  });
   return (
     <div>
-      <h1>{props.campaigns[0]}</h1>
+      <Card.Group items={items} />
     </div>
   );
 };
