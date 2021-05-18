@@ -1,7 +1,7 @@
 import React from 'react';
 
 import factory from '../ethereum/factory';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 // import 'semantic-ui-css/semantic.min.css';
 
 const NewCampaign = (props) => {
@@ -15,6 +15,7 @@ const NewCampaign = (props) => {
   return (
     <div>
       <Card.Group items={items} />
+      <Button content='Create Campaign' icon='add' primary />
     </div>
   );
 };
