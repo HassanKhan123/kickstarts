@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function newcampaign() {
+import factory from '../ethereum/factory';
+
+function NewCampaign() {
+  useEffect(() => {
+    (async () => {
+      const campaigns = await factory.methods.getDeployedCampaigns().call();
+      console.log('campaigns======', campaigns);
+    })();
+  }, []);
   return (
     <div>
       <h1>New Campaign</h1>
@@ -8,4 +16,4 @@ function newcampaign() {
   );
 }
 
-export default newcampaign;
+export default NewCampaign;
