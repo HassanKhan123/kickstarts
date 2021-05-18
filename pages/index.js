@@ -16,8 +16,8 @@ const NewCampaign = (props) => {
     <Layout>
       <div>
         <h3>Open Campaigns</h3>
+        <Button content='Create Campaign' icon='add' floated='right' primary />
         <Card.Group items={items} />
-        <Button content='Create Campaign' icon='add' primary />
       </div>
     </Layout>
   );
