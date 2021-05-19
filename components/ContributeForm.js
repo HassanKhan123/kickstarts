@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, Message } from 'semantic-ui-react';
 
-const ContributeForm = () => {
+import Campaign from '../ethereum/campaign';
+
+const ContributeForm = (props) => {
+  const [value, setValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const campaign = Campaign(props.address);
+  };
   return (
-    <Form>
+    <Form onSubmit={submitHandler}>
       <Form.Field>
         <label>Amount to Contribute</label>
-        <Input label='ether' labelPosition='right' />
+        <Input
+          label='ether'
+          labelPosition='right'
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
       </Form.Field>
 
       <Button primary>Contribute!</Button>
