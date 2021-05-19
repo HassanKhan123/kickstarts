@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Card } from 'semantic-ui-react';
+import React from 'react';
+import { Card, Grid } from 'semantic-ui-react';
 
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
@@ -64,8 +64,14 @@ const CampaignShow = (props) => {
   return (
     <Layout>
       <h3>Campaign Show</h3>
-      <Card.Group items={items} />
-      <ContributeForm />
+      <Grid>
+        <Grid.Column width={10}>
+          <Card.Group items={items} />
+        </Grid.Column>
+        <Grid.Column width={6}>
+          <ContributeForm />
+        </Grid.Column>
+      </Grid>
     </Layout>
   );
 };
