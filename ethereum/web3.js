@@ -4,7 +4,7 @@ let web3;
 
 const ethEnabled = async () => {
   if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
-    // await window.ethereum.sendAsync('eth_requestAccounts');
+    // await window.ethereum.request({ method: 'eth_requestAccounts' });
     web3 = new Web3(window.ethereum);
   } else {
     const provider = new Web3.providers.HttpProvider(
